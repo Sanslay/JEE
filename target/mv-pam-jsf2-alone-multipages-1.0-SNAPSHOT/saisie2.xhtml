@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+  <h:panelGrid columns="3">
+    <h:outputText value="#{msg['form.comboEmployes.libellé']}"/>
+    <h:outputText value="#{msg['form.heuresTravaillées.libellé']}"/>
+    <h:outputText value="#{msg['form.joursTravaillés.libellé']}"/>
+
+
+    <h:selectOneMenu id="comboEmployes" value="#{form.comboEmployesValue}">
+      <f:selectItems value="#{form.selectOneListbox1Items}"/>
+    </h:selectOneMenu>
+    <h:inputText id="heuresTravaillees" value="#{form.heuresTravaillées}" required="true"
+                 requiredMessage="#{msg['form.heuresTravaillées.required']}"
+                 validatorMessage="#{msg['form.heuresTravaillées.validation']}">
+      <f:validateDoubleRange minimum="0" maximum="300"/>
+    </h:inputText>
+    <h:inputText id="joursTravailles" value="#{form.joursTravaillés}" required="true"
+                 requiredMessage="#{msg['form.joursTravaillés.required']}"
+                 validatorMessage="#{msg['form.joursTravaillés.validation']}">
+      <f:validateLongRange minimum="0" maximum="31"/>
+    </h:inputText>
+    <h:panelGroup></h:panelGroup>
+
+  </h:panelGrid>
+  <hr/>
+</html>

@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+  <ui:composition template="layout.xhtml">
+    <ui:define name="part1">
+      <!-- tableau des simulations -->
+      <h:dataTable value="#{sessionData.simulations}" var="simulation"
+                   headerClass="simulationsHeaders"
+                   columnClasses="simuNum,simuNom,simuPrenom,simuHT,simuJT,simuSalaireBase,simuIndemnites,simu
+                   CotisationsSociales,simuSalaireNet">
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="#{msg['simulations.headers.numero']}"/>
+          </f:facet>
+          <h:outputText value="#{simulation.num}"/>
+        </h:column>
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="#{msg['simulations.headers.nom']}"/>
+          </f:facet>
+          <h:outputText value="#{simulation.feuilleSalaire.employe.nom}"/>
+        </h:column>
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="#{msg['simulations.headers.prenom']}"/>
+          </f:facet>
+          <h:outputText value="#{simulation.feuilleSalaire.employe.prenom}"/>
+        </h:column>
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="#{msg['simulations.headers.heuresTravaillees']}"/>
+          </f:facet>
+          <h:outputText value="#{simulation.heuresTravaillées}"/>
+        </h:column>
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="#{msg['simulations.headers.joursTravailles']}"/>
+          </f:facet>
+          <h:outputText value="#{simulation.joursTravaillés}"/>
+        </h:column>
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="#{msg['simulations.headers.salaireBase']}"/>
+          </f:facet>
+          <h:outputText value="#{simulation.feuilleSalaire.elementsSalaire.salaireBase}"/>
+        </h:column>
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="#{msg['simulations.headers.indemnites']}"/>
+          </f:facet>
+          <h:outputText value="#{simulation.indemnites}"/>
+        </h:column>
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="#{msg['simulations.headers.cotisationsSociales']}"/>
+          </f:facet>
+          <h:outputText
+            value="#{simulation.feuilleSalaire.elementsSalaire.cotisationsSociales}"/>
+        </h:column>
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="#{msg['simulations.headers.salaireNet']}"/>
+          </f:facet>
+          <h:outputText value="#{simulation.feuilleSalaire.elementsSalaire.salaireNet}"/>
+        </h:column>
+        <h:column>
+          <h:commandLink value="Retirer" action="#{form.retirerSimulation}">
+            <f:setPropertyActionListener target="#{form.numSimulationToDelete}"
+                                         value="#{simulation.num}"/>
+          </h:commandLink>
+        </h:column>
+      </h:dataTable>
+    </ui:define>
+
+  </ui:composition>
+</html>

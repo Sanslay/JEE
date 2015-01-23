@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+  <ui:composition template="layout.xhtml">
+    <ui:define name="part1">
+      <ui:include src="saisie2.xhtml"/>
+    </ui:define>
+    <ui:define name="part2">
+        <h:outputText value="#{msg['form.infos.employé']}" styleClass="titreInfos"/>
+      <br/><br/>
+      <h:panelGrid columns="3" rowClasses="libelle,info">
+        <h:outputText value="#{msg['form.employe.nom']}"/>
+        <h:outputText value="#{msg['form.employe.prénom']}"/>
+        <h:outputText value="#{msg['form.employe.adresse']}"/>
+        <h:outputText value="#{form.feuilleSalaire.employe.nom}"/>
+        <h:outputText value="#{form.feuilleSalaire.employe.prenom}"/>
+        <h:outputText value="#{form.feuilleSalaire.employe.adresse}"/>
+      </h:panelGrid>
+      <h:panelGrid columns="3" rowClasses="libelle,info">
+        <h:outputText value="#{msg['form.employe.ville']}"/>
+        <h:outputText value="#{msg['form.employe.codePostal']}"/>
+        <h:outputText value="#{msg['form.employe.indice']}"/>
+        <h:outputText value="#{form.feuilleSalaire.employe.ville}"/>
+        <h:outputText value="#{form.feuilleSalaire.employe.cp}"/>
+        <h:outputText value="#{form.feuilleSalaire.employe.indemniteId.indice}"/>
+      </h:panelGrid>
+      <br/>
+      <h:outputText value="#{msg['form.infos.cotisations']}" styleClass="titreInfos"/>
+      <br/><br/>
+      <h:panelGrid columns="4" rowClasses="libelle,info">
+        <h:outputText value="#{msg['form.cotisations.csgrds']}"/>
+        <h:outputText value="#{msg['form.cotisations.csgd']}"/>
+        <h:outputText value="#{msg['form.cotisations.retraite']}"/>
+        <h:outputText value="#{msg['form.cotisations.secu']}"/>
+        <h:outputText value="#{form.feuilleSalaire.cotisation.csgrds} %"/>
+        <h:outputText value="#{form.feuilleSalaire.cotisation.csgd} %"/>
+        <h:outputText value="#{form.feuilleSalaire.cotisation.retraite} %"/>
+        <h:outputText value="#{form.feuilleSalaire.cotisation.secu} %"/>
+      </h:panelGrid>
+      <br/>
+      <h:outputText value="#{msg['form.infos.indemnites']}" styleClass="titreInfos"/>
+      <br/><br/>
+      <h:panelGrid columns="4" rowClasses="libelle,info">
+        <h:outputText value="#{msg['form.indemnites.salaireHoraire']}"/>
+        <h:outputText value="#{msg['form.indemnites.entretienJour']}"/>
+        <h:outputText value="#{msg['form.indemnites.repasJour']}"/>
+        <h:outputText value="#{msg['form.indemnites.congésPayés']}"/>
+        <h:outputFormat value="{0,number,currency}">
+          <f:param value="#{form.feuilleSalaire.employe.indemniteId.baseHeure}"/>
+        </h:outputFormat>
+        <h:outputFormat value="{0,number,currency}">
+          <f:param value="#{form.feuilleSalaire.employe.indemniteId.entretienJour}"/>
+        </h:outputFormat>
+        <h:outputFormat value="{0,number,currency}">
+          <f:param value="#{form.feuilleSalaire.employe.indemniteId.repasJour}"/>
+        </h:outputFormat>
+        <h:outputText value="#{form.feuilleSalaire.employe.indemniteId.indemnitesCp} %"/>
+      </h:panelGrid>
+      <br/>
+      <h:outputText value="#{msg['form.infos.salaire']}" styleClass="titreInfos"/>
+      <br/><br/>
+      <h:panelGrid columns="4" rowClasses="libelle,info">
+        <h:outputText value="#{msg['form.salaire.base']}"/>
+        <h:outputText value="#{msg['form.salaire.cotisationsSociales']}"/>
+        <h:outputText value="#{msg['form.salaire.entretien']}"/><h:outputText value="#{msg['form.salaire.repas']}"/>
+        <h:outputFormat value="{0,number,currency}">
+          <f:param value="#{form.feuilleSalaire.elementsSalaire.salaireBase}"/>
+        </h:outputFormat>
+        <h:outputFormat value="{0,number,currency}">
+          <f:param value="#{form.feuilleSalaire.elementsSalaire.cotisationsSociales}"/>
+        </h:outputFormat>
+        <h:outputFormat value="{0,number,currency}">
+          <f:param value="#{form.feuilleSalaire.elementsSalaire.indemnitesEntretien}"/>
+        </h:outputFormat>
+        <h:outputFormat value="{0,number,currency}">
+          <f:param value="#{form.feuilleSalaire.elementsSalaire.indemnitesRepas}"/>
+        </h:outputFormat>
+      </h:panelGrid>
+      <br/>
+      <h:panelGrid columns="3" columnClasses="libelle,col2,info">
+        <h:outputText value="#{msg['form.salaire.net']}"/>
+        <h:panelGroup></h:panelGroup>
+        <h:outputFormat value="{0,number,currency}">
+          <f:param value="#{form.feuilleSalaire.elementsSalaire.salaireNet}"/>
+        </h:outputFormat>
+      </h:panelGrid>
+    </ui:define>
+  </ui:composition>
+</html>

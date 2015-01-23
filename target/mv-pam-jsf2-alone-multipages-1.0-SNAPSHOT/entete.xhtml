@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+  <ui:composition>
+    <!-- entete -->
+    <h:panelGrid columns="2">
+      <h:panelGroup>
+        <h2><h:outputText value="#{msg['form.titre']}"/></h2>
+      </h:panelGroup>
+      <h:panelGroup>
+        <h:panelGrid columns="1">
+          <h:commandLink id="cmdFaireSimulation"
+                         value="#{msg['form.menu.faireSimulation']}" action="#{form.faireSimulation}"
+                         rendered="#{sessionData.menuFaireSimulationIsRendered}"/>
+          <h:commandLink id="cmdEffacerSimulation" onclick="raz()"
+                         value="#{msg['form.menu.effacerSimulation']}" action="#{form.effacerSimulation}"
+                         rendered="#{sessionData.menuEffacerSimulationIsRendered}"/>
+          <h:commandLink id="cmdEnregistrerSimulation" immediate="true"
+                         value="#{msg['form.menu.enregistrerSimulation']}" action="#{form.enregistrerSimulation}"
+                         rendered="#{sessionData.menuEnregistrerSimulationIsRendered}"/>
+          <h:commandLink id="cmdVoirSimulations" immediate="true"
+                         value="#{msg['form.menu.voirSimulations']}" action="#{form.voirSimulations}"
+                         rendered="#{sessionData.menuVoirSimulationsIsRendered}"/>
+          <h:commandLink id="cmdRetourSimulateur" immediate="true"
+                         value="#{msg['form.menu.retourSimulateur']}" action="#{form.retourSimulateur}"
+                         rendered="#{sessionData.menuRetourSimulateurIsRendered}"/>
+          <h:commandLink id="cmdTerminerSession" immediate="true"
+                         value="#{msg['form.menu.terminerSession']}" action="#{form.terminerSession}"
+                         rendered="#{sessionData.menuTerminerSessionIsRendered}"/>
+        </h:panelGrid>
+      </h:panelGroup>
+    </h:panelGrid>
+    <hr/>
+  </ui:composition>
+</html>

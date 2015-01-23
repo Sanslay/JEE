@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+  <f:view locale="#{sessionData.locale}">
+    <h:head>
+      <title><h:outputText value="#{msg['form.titre']}"/></title>
+      <h:outputStylesheet library="css" name="styles.css"/>
+    </h:head>
+    <script type="text/javascript">
+      function raz() {
+    // on change les valeurs postées
+        document.forms['formulaire'].elements['formulaire:comboEmployes'].value = "0";
+        document.forms['formulaire'].elements['formulaire:heuresTravaillees'].value = "0";
+        document.forms['formulaire'].elements['formulaire:joursTravailles'].value = "0";
+        
+      }
+    </script>
+    <h:body style="background-image: url('$
+            {request.contextPath}/resources/images/standard.jpg');">
+      <h:form id="formulaire">
+        <!-- entete -->
+        <ui:include src="entete.xhtml" />
+        <!-- contenu -->
+        <ui:insert name="part1" >
+          Gestion des assistantes maternelles
+        </ui:insert>
+        <ui:insert name="part2"/>
+      </h:form>
+    </h:body>
+  </f:view>
+</html>

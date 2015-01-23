@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-
+  transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+  <f:view locale="#{changeLocale.locale}">
+    <h:head>
+      <title>JSF</title>
+      <h:outputStylesheet library="css" name="style.css"/>
+    </h:head>
+    <h:body style="background-image: url('${request.contextPath}/resources/images/standard.jpg');">
+      <h:form id="formulaire">
+        <!-- langues -->
+
+        <h1><h:outputText value="#{msg['form.titre']}"/></h1>
+
+        <!-- entêtes -->
+        <h:panelGroup>
+          <h:outputText value="#{msg['form.comboEmployes.libellé']}" styleClass="col1"/>
+          <h:selectOneListbox id="selectOneListBox1" value="#{form.selectOneMenu}" size="1">
+            <f:selectItems value="#{form.selectOneListbox1Items}"/>
+          </h:selectOneListbox>
+        </h:panelGroup>
+
+
+
+
+        <h:panelGroup>
+          <h:outputText value="#{msg['form.heuresTravaillées.libellé']}" styleClass="col1"/>
+          <h:inputText id="inputText" /> 
+        </h:panelGroup>
+
+
+        <h:panelGroup>
+          <h:outputText value="#{msg['form.joursTravaillés.libellé']}" styleClass="col2"/>
+          <h:inputText id="inputText2" />
+        </h:panelGroup>
+        <f:subview id="viewInfos" rendered="#{form.viewInfosIsRendered}">
+          <p>
+            <h:outputText value="#{msg['form.infos.employé']}" styleClass="col1"/>
+          </p>
+          <p>
+            <h:outputText value="#{msg['form.employe.nom']}" styleClass="col1"/>
+            <h:outputText value="#{[form.feuilleSalaire.employe.nom]}" styleClass="col1"/>
+            <h:outputText value="#{msg['form.employe.prénom']}" styleClass="col1"/>
+            <h:outputText value="#{[form.feuilleSalaire.employe.prenom]}" styleClass="col1"/>
+            <h:outputText value="#{msg['form.employe.adresse']}" styleClass="col1"/>
+            <h:outputText value="#{[form.feuilleSalaire.employe.adresse]}" styleClass="col1"/>
+            <h:outputText value="#{msg['form.employe.ville']}" styleClass="col1"/>
+            <h:outputText value="#{[form.feuilleSalaire.employe.ville]}" styleClass="col1"/>
+            <h:outputText value="#{msg['form.employe.codePostal']}" styleClass="col1"/>
+            <h:outputText value="#{[form.feuilleSalaire.employe.cp]}" styleClass="col1"/>
+          </p>
+
+          <p>
+            <h:outputText value="#{msg['form.infos.cotisations']}" styleClass="col1"/>
+          </p>   
+          <p>
+            <h:outputText value="#{msg['form.cotisations.csgrds']}" styleClass="col1"/>
+            <h:outputText value="#{[form.feuilleSalaire.cotisation.csgrds]}" styleClass="col1"/>
+            <h:outputText value="#{msg['form.cotisations.csgd']}" styleClass="col1"/>
+            <h:outputText value="#{[form.feuilleSalaire.cotisation.csgd]}" styleClass="col1"/>
+            <h:outputText value="#{msg['form.cotisations.retraite']}" styleClass="col1"/>
+            <h:outputText value="#{[form.feuilleSalaire.cotisation.retraite]}" styleClass="col1"/>
+            <h:outputText value="#{msg['form.cotisations.secu']}" styleClass="col1"/>
+            <h:outputText value="#{[form.feuilleSalaire.cotisation.secu]}" styleClass="col1"/>
+
+          </p>
+
+          <p>
+            <h:outputText value="#{msg['form.infos.indemnites']}" styleClass="col1"/>
+          </p>   
+          <p>
+            <h:outputText value="#{msg['form.indemnites.salaireHoraire']}" styleClass="col1"/>
+            <h:outputText value="#{[form.feuilleSalaire.employe.indemniteId.baseHeure]}" styleClass="col1"/>
+            <h:outputText value="#{msg['form.indemnites.entretienJour']}" styleClass="col1"/>
+            <h:outputText value="#{[form.feuilleSalaire.employe.indemniteId.entretienJour]}" styleClass="col1"/>
+            <h:outputText value="#{msg['form.indemnites.repasJour']}" styleClass="col1"/>
+            <h:outputText value="#{[form.feuilleSalaire.employe.indemniteId.repasJour]}" styleClass="col1"/>
+            <h:outputText value="#{msg['form.indemnites.congésPayés']}" styleClass="col1"/>
+            <h:outputText value="#{[form.feuilleSalaire.employe.indemniteId.indemnitesCp]}" styleClass="col1"/>
+
+          </p>
+
+          <p>
+            <h:outputText value="#{msg['form.infos.salaire']}" styleClass="col1"/>
+          </p>   
+          <p>
+            <h:outputText value="#{msg['form.salaire.base']}" styleClass="col1"/>
+            <h:outputText value="#{[form.feuilleSalaire.elementsSalaire.salaireBase]}" styleClass="col1"/>
+            <h:outputText value="#{msg['form.salaire.cotisationsSociales']}" styleClass="col1"/>
+            <h:outputText value="#{[form.feuilleSalaire.elementsSalaire.cotisationsSociales]}" styleClass="col1"/>
+            <h:outputText value="#{msg['form.salaire.entretien']}" styleClass="col1"/>
+            <h:outputText value="#{[form.feuilleSalaire.elementsSalaire.indemnitesEntretien]}" styleClass="col1"/>
+            <h:outputText value="#{msg['form.salaire.repas']}" styleClass="col1"/>
+            <h:outputText value="#{[form.feuilleSalaire.elementsSalaire.indemnitesRepas]}" styleClass="col1"/>
+
+          </p>
+        </f:subview >
+
+        <p>
+          <h:commandButton type="submit" id="submit" value="#{msg['form.btnSalaire.libellé']}" action="#{form.CalculerSalaire}" />
+          <h:commandButton type="submit" id="submit2" value="#{msg['form.btnRaz.libellé']}"/>
+        </p>
+
+      </h:form>
+    </h:body>
+  </f:view>
+</html>
